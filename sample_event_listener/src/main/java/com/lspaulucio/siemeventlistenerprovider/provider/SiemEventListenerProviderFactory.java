@@ -1,4 +1,4 @@
-package com.coderdude.sampleeventlistenerprovider.provider;
+package com.lspaulucio.siemeventlistenerprovider.provider;
 
 import org.keycloak.Config;
 import org.keycloak.events.EventListenerProvider;
@@ -6,15 +6,12 @@ import org.keycloak.events.EventListenerProviderFactory;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.KeycloakSessionFactory;
 
-
-
-public class SampleEventListenerProviderFactory implements EventListenerProviderFactory {
-
+public class SiemEventListenerProviderFactory implements EventListenerProviderFactory {
 
     @Override
     public EventListenerProvider create(KeycloakSession keycloakSession) {
 
-        return new SampleEventListenerProvider();
+        return new SiemEventListenerProvider();
     }
 
     @Override
@@ -34,6 +31,6 @@ public class SampleEventListenerProviderFactory implements EventListenerProvider
 
     @Override
     public String getId() {
-        return "sample_event_listener";
+        return "siem_logger";
     }
 }

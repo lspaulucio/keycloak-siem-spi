@@ -1,0 +1,22 @@
+version: '2'
+services:
+  sso:
+    image: keycloak
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: keycloak
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      EVENT_LISTENER_SIEM_HOST: netcat
+      EVENT_LISTENER_SIEM_PORT: 514
+      EVENT_LISTENER_SIEM_PROTOCOL: UDP
+      EVENT_LISTENER_SIEM_APP_NAME: MYAPP
+    ports:
+      - '8080:8080'
+    command: ['start-dev']
+  netcat:
+    image: alpine:3.14
+    container_name: netcat
+    command: ['nc', '-lku', '-s', '0.0.0.0', '-p', '514']

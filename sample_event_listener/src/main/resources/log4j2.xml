@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>        
+        <Syslog 
+            name="Syslog" 
+            appName="${env:EVENT_LISTENER_SIEM_APP_NAME}" 
+            format="RFC5424" 
+            host="${env:EVENT_LISTENER_SIEM_HOST}" 
+            port="${env:EVENT_LISTENER_SIEM_PORT}" 
+            protocol="${env:EVENT_LISTENER_SIEM_PROTOCOL}"
+            facility="Audit"
+            id="${env:EVENT_LISTENER_SIEM_APP_NAME}"
+            includeMDC="true"
+            newline="true">
+            <PatternLayout pattern="%style{%date{DEFAULT}}{yellow} %highlight{%-5level}{FATAL=bg_red, ERROR=red, WARN=yellow, INFO=green} %message\n"/>
+        </Syslog>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Syslog"/>
+        </Root>
+    </Loggers>
+</Configuration>
+

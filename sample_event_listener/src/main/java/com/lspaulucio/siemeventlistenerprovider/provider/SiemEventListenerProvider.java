@@ -1,4 +1,4 @@
-package com.coderdude.sampleeventlistenerprovider.provider;
+package com.lspaulucio.siemeventlistenerprovider.provider;
 
 import org.keycloak.events.Event;
 import org.keycloak.events.EventListenerProvider;
@@ -6,22 +6,30 @@ import org.keycloak.events.admin.AdminEvent;
 
 import java.util.Map;
 
+// Import log4j classes.
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
-public class SampleEventListenerProvider implements EventListenerProvider {
+public class SiemEventListenerProvider implements EventListenerProvider {
 
-    public SampleEventListenerProvider() {
+    private static final Logger logger = LogManager.getLogger(SiemEventListenerProvider.class);
+
+    public SiemEventListenerProvider() {
     }
 
     @Override
     public void onEvent(Event event) {
 
-        System.out.println("Event Occurred:" + toString(event));
+        logger.info(toString(event));
+        // System.out.println("Event Occurred MyListener:" + toString(event));
     }
 
     @Override
     public void onEvent(AdminEvent adminEvent, boolean b) {
 
-        System.out.println("Admin Event Occurred:" + toString(adminEvent));
+        logger.info(toString(adminEvent));
+        // System.out.println("Admin Event Occurred MyListener:" +
+        // toString(adminEvent));
     }
 
     @Override
@@ -32,7 +40,6 @@ public class SampleEventListenerProvider implements EventListenerProvider {
     private String toString(Event event) {
 
         StringBuilder sb = new StringBuilder();
-
 
         sb.append("type=");
 
@@ -54,7 +61,6 @@ public class SampleEventListenerProvider implements EventListenerProvider {
 
         sb.append(event.getIpAddress());
 
-
         if (event.getError() != null) {
 
             sb.append(", error=");
@@ -62,7 +68,6 @@ public class SampleEventListenerProvider implements EventListenerProvider {
             sb.append(event.getError());
 
         }
-
 
         if (event.getDetails() != null) {
 
@@ -92,16 +97,13 @@ public class SampleEventListenerProvider implements EventListenerProvider {
 
         }
 
-
         return sb.toString();
 
     }
 
-
     private String toString(AdminEvent adminEvent) {
 
         StringBuilder sb = new StringBuilder();
-
 
         sb.append("operationType=");
 
@@ -127,7 +129,6 @@ public class SampleEventListenerProvider implements EventListenerProvider {
 
         sb.append(adminEvent.getResourcePath());
 
-
         if (adminEvent.getError() != null) {
 
             sb.append(", error=");
@@ -135,9 +136,18 @@ public class SampleEventListenerProvider implements EventListenerProvider {
             sb.append(adminEvent.getError());
 
         }
-
-
         return sb.toString();
 
     }
+
+    public static void main(String[] args) {
+        System.out.println("Test LOGGER");
+        System.out.println(logger.getName());
+        logger.info("Test INFO");
+        logger.fatal("Teste FATAL");
+        logger.error("Teste ERROR");
+        logger.debug("Teste DEBUG");
+        logger.trace("Teste TRACE");
+    }
+
 }
