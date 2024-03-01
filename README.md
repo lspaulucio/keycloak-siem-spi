@@ -41,7 +41,9 @@ Here, the Keycloak with the SPI will run in a container and to simulate our SIEM
    ```
    
 6. Activating SIEM Logger SPI
+   
    6.1 Log in to Keycloak admin console [http://localhost:8080](http://localhost:8080) (admin, admin)
+   
    6.2 Go to **Realm settings->Events**. In the field **"Event Listeners"** includes **"siem_logger"** and click in **Save**.
 
 ![KeycloakConfig](https://github.com/lspaulucio/keycloak-siem-spi/assets/17748220/028b1190-913a-479f-bea8-17cdc33dd57c)
@@ -59,7 +61,9 @@ Here, the Keycloak with the SPI will run in a container and to simulate our SIEM
    ```
 
 8. Now let's create a new client on Master Realm and check if the events will be received in netcat.
+   
    8.1 Go to **Clients->Create Client**. 
+
    8.2 Insert a name for your Client ID and click on **Next** and **Save**.
 
 9. Get back to netcat logs. If everything works fine will see the create realm event on netcat logs :tada: :tada: :tada: :smile:
