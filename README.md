@@ -25,8 +25,8 @@ Here, the Keycloak with the SPI will run in a container and to simulate our SIEM
 
 1. Cloning repository
    ```bash
-   git clone https://github.com/lspaulucio/keycloak-event-listener-spi
-   cd keycloak-event-listener-spi/sample_event_listener
+   git clone https://github.com/lspaulucio/keycloak-siem-spi
+   cd keycloak-siem-spi/sample_event_listener
    ```
 2. Creating jar file
    ```bash
