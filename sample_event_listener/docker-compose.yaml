@@ -12,7 +12,7 @@ services:
       EVENT_LISTENER_SIEM_HOST: netcat
       EVENT_LISTENER_SIEM_PORT: 514
       EVENT_LISTENER_SIEM_PROTOCOL: UDP
-      EVENT_LISTENER_SIEM_APP_NAME: MYAPP
+      EVENT_LISTENER_SIEM_APP_NAME: Keycloak
     ports:
       - '8080:8080'
     command: ['start-dev']
