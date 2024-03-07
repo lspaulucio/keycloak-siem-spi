@@ -20,6 +20,7 @@ Here, the Keycloak with the SPI will run in a container and to simulate our SIEM
 
 ## Dependencies
 - Docker
+- Java
 - Maven
 ---
 
