@@ -49,14 +49,9 @@
             <artifactId>jboss-jaxrs-api_2.1_spec</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>2.20.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.20.0</version>
+            <groupId>com.cloudbees</groupId>
+            <artifactId>syslog-java-client</artifactId>
+            <version>1.1.7</version>
         </dependency>
     </dependencies>
 

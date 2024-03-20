@@ -4,32 +4,46 @@ import org.keycloak.events.Event;
 import org.keycloak.events.EventListenerProvider;
 import org.keycloak.events.admin.AdminEvent;
 
+import java.io.IOException;
 import java.util.Map;
 
-// Import log4j classes.
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import com.cloudbees.syslog.Facility;
+import com.cloudbees.syslog.MessageFormat;
+import com.cloudbees.syslog.Severity;
+import com.cloudbees.syslog.sender.TcpSyslogMessageSender;
 
 public class SiemEventListenerProvider implements EventListenerProvider {
 
-    private static final Logger logger = LogManager.getLogger(SiemEventListenerProvider.class);
+    private static final TcpSyslogMessageSender messageSender = new TcpSyslogMessageSender();
 
     public SiemEventListenerProvider() {
+        // messageSender.setDefaultMessageHostname("myhostname");
+        messageSender.setDefaultAppName(System.getenv("EVENT_LISTENER_SIEM_APP_NAME"));
+        messageSender.setDefaultFacility(Facility.AUDIT);
+        messageSender.setDefaultSeverity(Severity.INFORMATIONAL);
+        messageSender.setSyslogServerHostname(System.getenv("EVENT_LISTENER_SIEM_HOST"));
+        messageSender.setSyslogServerPort(Integer.parseInt(System.getenv("EVENT_LISTENER_SIEM_PORT")));
+        messageSender.setMessageFormat(MessageFormat.RFC_5424);
     }
 
     @Override
     public void onEvent(Event event) {
 
-        logger.info(toString(event));
-        // System.out.println("Event Occurred MyListener:" + toString(event));
+        try {
+            messageSender.sendMessage(toString(event));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void onEvent(AdminEvent adminEvent, boolean b) {
 
-        logger.info(toString(adminEvent));
-        // System.out.println("Admin Event Occurred MyListener:" +
-        // toString(adminEvent));
+        try {
+            messageSender.sendMessage(toString(adminEvent));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -141,13 +155,11 @@ public class SiemEventListenerProvider implements EventListenerProvider {
     }
 
     public static void main(String[] args) {
-        System.out.println("Test LOGGER");
-        System.out.println(logger.getName());
-        logger.info("Test INFO");
-        logger.fatal("Teste FATAL");
-        logger.error("Teste ERROR");
-        logger.debug("Teste DEBUG");
-        logger.trace("Teste TRACE");
+        try {
+            messageSender.sendMessage("This is a test message\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
