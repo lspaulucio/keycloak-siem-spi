@@ -45,7 +45,7 @@ Here, the Keycloak with the SPI will run in a container and to simulate our SIEM
    
    6.1 Log in to Keycloak admin console [http://localhost:8080](http://localhost:8080) (admin, admin)
    
-   6.2 Go to **Realm settings->Events**. In the field **"Event Listeners"** includes **"siem_logger"** and click in **Save**.
+   6.2 Go to **Events->Config**. In the field **"Event Listeners"** includes **"siem_logger"** and click in **Save**.
 
 ![KeycloakConfig](https://github.com/lspaulucio/keycloak-siem-spi/assets/17748220/559e70f4-7257-48da-9612-d3e3c7a7c634)
 
