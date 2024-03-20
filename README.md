@@ -71,9 +71,14 @@ Here, the Keycloak with the SPI will run in a container and to simulate our SIEM
    ![netcatlogs](https://github.com/lspaulucio/keycloak-siem-spi/assets/17748220/142bdfab-6784-4400-9303-b98ca0032ac0)
     > If you are not able to see the logs, please recheck the steps above and see if you do everything right :grimacing: :sweat_smile:
   
+## Keycloak Legacy Versions
 
+Since Keycloak 17, the default distribution started to be powered by Quarkus, while the legacy versions remained using WildFly [^1].
+[^1]: https://www.keycloak.org/migration/migrating-to-quarkus
 
+I don't know the reason yet :sweat_smile: (maybe lack of knowledge :grimacing: :cry:) but I was incapable of using the `log4j` package to send Syslog messages in Keycloak legacy versions.
 
+So for these legacy versions, I've used the ![Syslog Java Client](https://github.com/jenkinsci/syslog-java-client). You can find the project here in the ![legacy branch](https://github.com/lspaulucio/keycloak-siem-spi/tree/legacy). 
 
 # Credits
 
