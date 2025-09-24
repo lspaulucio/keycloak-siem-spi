@@ -82,7 +82,7 @@ So for these legacy versions, I've used the ![Syslog Java Client](https://github
 
 # Credits
 
-This SPI is based on Adwait Thattey repository [keycloak-event-listener-spi](https://github.com/lspaulucio/keycloak-event-listener-spi).
+This SPI is based on Adwait Thattey repository [keycloak-event-listener-spi](https://github.com/adwait-thattey/keycloak-event-listener-spi).
 
 He created a post on his blog explaining step by step on how to create an SPI. If you want more information check it out: https://dev.to/adwaitthattey/building-an-event-listener-spi-plugin-for-keycloak-2044
 
