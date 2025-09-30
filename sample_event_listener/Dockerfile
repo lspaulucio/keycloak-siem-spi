@@ -1,2 +1,2 @@
-FROM quay.io/keycloak/keycloak:19.0.3
+FROM quay.io/keycloak/keycloak:26.2.5
 COPY ./target/siem-event-listener-jar-with-dependencies.jar /opt/keycloak/providers/
