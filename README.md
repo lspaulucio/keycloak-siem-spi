@@ -36,7 +36,7 @@ Here, the Keycloak with the SPI will run in a container and to simulate our SIEM
 3. Running Keycloak. 
 > This will build the SPI and insert it into Keycloak. Check Dockerfile
 
-> In this version of Keycloak (19.0.3) the customized SPIs are localized in the /opt/keycloak/providers folder.
+> In this version of Keycloak (19.0.3+) the customized SPIs are localized in the /opt/keycloak/providers folder.
    ```bash
    docker compose up
    ```
